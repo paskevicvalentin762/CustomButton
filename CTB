@@ -1,0 +1,13 @@
+struct ExampleView: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            Text("Hello World !!!")
+                .anchorPreference(
+                    key: BoundsPreferenceKey.self,
+                    value: .bounds
+                ) { $0 }
+        }
+        .overlayPreferenceValue(BoundsPreferenceKey.self) { preferences in
+            GeometryReader { geometry in
+                preferences.map {
